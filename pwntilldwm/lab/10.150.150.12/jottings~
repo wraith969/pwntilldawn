@@ -1,0 +1,7 @@
+NMAP 
+	port 80
+		login 
+			user:admin
+			pass: admin 
+		upload file available , tring rfi with nc.exe
+		

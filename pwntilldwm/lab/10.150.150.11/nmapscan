@@ -1,0 +1,106 @@
+Starting Nmap 7.94 ( https://nmap.org ) at 2023-10-05 05:10 MST
+Nmap scan report for 10.150.150.11
+Host is up (0.15s latency).
+Not shown: 985 closed tcp ports (reset)
+PORT      STATE SERVICE            VERSION
+21/tcp    open  ftp                Xlight ftpd 3.9
+80/tcp    open  http               Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1g PHP/7.4.9)
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.4.9
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: PwnDrive - Your Personal Online Storage
+135/tcp   open  msrpc              Microsoft Windows RPC
+139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn
+443/tcp   open  ssl/http           Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1g PHP/7.4.9)
+|_ssl-date: TLS randomness does not represent time
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: PwnDrive - Your Personal Online Storage
+| tls-alpn: 
+|_  http/1.1
+| ssl-cert: Subject: commonName=localhost
+| Not valid before: 2009-11-10T23:48:47
+|_Not valid after:  2019-11-08T23:48:47
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1g PHP/7.4.9
+445/tcp   open  microsof A¬Üªª     Windows Server 2008 R2 Enterprise 7601 Service Pack 1 microsoft-ds
+1433/tcp  open  ms-sql-s           Microsoft SQL Server 2012 11.00.2100.00; RTM
+|_ssl-date: 2023-10-05T12:49:09+00:00; +34m25s from scanner time.
+| ms-sql-ntlm-info: 
+|   10.150.150.11:1433: 
+|     Target_Name: PWNDRIVE
+|     NetBIOS_Domain_Name: PWNDRIVE
+|     NetBIOS_Computer_Name: PWNDRIVE
+|     DNS_Domain_Name: PwnDrive
+|     DNS_Computer_Name: PwnDrive
+|_    Product_Version: 6.1.7601
+| ms-sql-info: 
+|   10.150.150.11:1433: 
+|     Version: 
+|       name: Microsoft SQL Server 2012 RTM
+|       number: 11.00.2100.00
+|       Product: Microsoft SQL Server 2012
+|       Service pack level: RTM
+|       Post-SP patches applied: false
+|_    TCP port: 1433
+| ssl-cert: Subject: commonName=SSL_Self_Signed_Fallback
+| Not valid before: 2020-08-24T13:11:13
+|_Not valid after:  2050-08-24T13:11:13
+3306/tcp  open  mysql              MySQL 5.5.5-10.4.14-MariaDB
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.5.5-10.4.14-MariaDB
+|   Thread ID: 1105
+|   Capabilities flags: 63486
+|   Some Capabilities: ODBCClient, DontAllowDatabaseTableColumn, SupportsLoadDataLocal, Speaks41ProtocolOld, SupportsTransactions, IgnoreSigpipes, InteractiveClient, IgnoreSpaceBeforeParenthesis, LongColumnFlag, ConnectWithDatabase, Speaks41ProtocolNew, Support41Auth, SupportsCompression, FoundRows, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: <%B['M-;}*UL^uPo^hq}
+|_  Auth Plugin Name: mysql_native_password
+3389/tcp  open  ssl/ms-wbt-server?
+| ssl-cert: Subject: commonName=PwnDrive
+| Not valid before: 2023-10-04T09:27:37
+|_Not valid after:  2024-04-04T09:27:37
+| rdp-ntlm-info: 
+|   Target_Name: PWNDRIVE
+|   NetBIOS_Domain_Name: PWNDRIVE
+|   NetBIOS_Computer_Name: PWNDRIVE
+|   DNS_Domain_Name: PwnDrive
+|   DNS_Computer_Name: PwnDrive
+|   Product_Version: 6.1.7601
+|_  System_Time: 2023-10-05T12:49:00+00:00
+|_ssl-date: 2023-10-05T12:49:08+00:00; +34m25s from scanner time.
+49152/tcp open  msrpc              Microsoft Windows RPC
+49153/tcp open  msrpc              Microsoft Windows RPC
+49154/tcp open  msrpc              Microsoft Windows RPC
+49155/tcp open  msrpc              Microsoft Windows RPC
+49156/tcp open  msrpc              Microsoft Windows RPC
+49157/tcp open  msrpc              Microsoft Windows RPC
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows Server 2008 R2 Enterprise 7601 Service Pack 1 (Windows Server 2008 R2 Enterprise 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_server_2008::sp1
+|   Computer name: PwnDrive
+|   NetBIOS computer name: PWNDRIVE\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2023-10-05T05:49:01-07:00
+|_nbstat: NetBIOS name: PWNDRIVE, NetBIOS user: <unknown>, NetBIOS MAC: 00:0c:29:89:87:cb (VMware)
+| smb2-time: 
+|   date: 2023-10-05T12:49:00
+|_  start_date: 2020-08-24T13:11:20
+| smb2-security-mode: 
+|   2:1:0: 
+|_    Message signing enabled but not required
+|_clock-skew: mean: 1h34m25s, deviation: 2h38m45s, median: 34m24s
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 273.63 seconds
